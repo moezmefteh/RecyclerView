@@ -11,12 +11,19 @@ import java.util.LinkedList;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private CountrieListAdapter mAdapter;
-    private final LinkedList<String> mCountrieList = new LinkedList<>();
+    private final LinkedList<Countrie> mCountrieList = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mCountrieList.add(new Countrie(R.drawable.tunisia,"Tunisia"));
+        mCountrieList.add(new Countrie(R.drawable.angleterre,"Angleterre"));
+        mCountrieList.add(new Countrie(R.drawable.tour_eiffel,"Paris"));
+        mCountrieList.add(new Countrie(R.drawable.tower_pisa,"Italy"));
+        mCountrieList.add(new Countrie(R.drawable.greatwall,"China"));
+        mCountrieList.add(new Countrie(R.drawable.partyfounding,"Korea"));
 
         mRecyclerView = findViewById(R.id.recyclerview);
 // Create an adapter and supply the data to be displayed.
@@ -26,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
 // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        for (int i = 0; i < 30; i++) {
-            mCountrieList.addLast("Word " + i);
-        }
+
     }
 }

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import java.util.LinkedList;
 
@@ -19,11 +20,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mCountrieList.add(new Countrie(R.drawable.tunisia,"Tunisia"));
-        mCountrieList.add(new Countrie(R.drawable.angleterre,"Angleterre"));
+        mCountrieList.add(new Countrie(R.drawable.angleterre,"angleterre"));
         mCountrieList.add(new Countrie(R.drawable.tour_eiffel,"Paris"));
         mCountrieList.add(new Countrie(R.drawable.tower_pisa,"Italy"));
-        mCountrieList.add(new Countrie(R.drawable.greatwall,"China"));
-        mCountrieList.add(new Countrie(R.drawable.partyfounding,"Korea"));
 
         mRecyclerView = findViewById(R.id.recyclerview);
 // Create an adapter and supply the data to be displayed.

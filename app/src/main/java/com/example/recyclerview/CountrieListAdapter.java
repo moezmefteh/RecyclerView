@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,12 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.LinkedList;
 
 public class CountrieListAdapter extends RecyclerView.Adapter<CountrieListAdapter.CountrieViewHolder>{
-    private final LinkedList<String> mCountrieList;
+    private final LinkedList<Countrie> mCountrieList;
     private LayoutInflater mInflater;
 
-    public CountrieListAdapter(Context context,LinkedList<String> wordList) {
+    public CountrieListAdapter(Context context,LinkedList<Countrie> countrieList) {
         mInflater = LayoutInflater.from(context);
-        this.mCountrieList = wordList;
+        this.mCountrieList = countrieList;
+
     }
 
     @NonNull
@@ -28,9 +30,11 @@ public class CountrieListAdapter extends RecyclerView.Adapter<CountrieListAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CountrieListAdapter.CountrieViewHolder holder, int position) {
-        String mCurrent = mCountrieList.get(position);
-        holder.countrieItemView.setText(mCurrent);
+    public void onBindViewHolder(CountrieViewHolder holder, int position) {
+        Countrie mCurrent = mCountrieList.get(position);
+        holder.countrieItem1View.setText(mCurrent.getNom());
+        holder.countrieItem2View.setImageResource(mCurrent.getIconID());
+
     }
     @Override
     public int getItemCount() {
@@ -38,13 +42,17 @@ public class CountrieListAdapter extends RecyclerView.Adapter<CountrieListAdapte
     }
 
     class CountrieViewHolder extends RecyclerView.ViewHolder {
-        public final TextView countrieItemView;
+        public final TextView countrieItem1View;
+        public final ImageView countrieItem2View;
+
         final CountrieListAdapter mAdapter;
 
-        CountrieViewHolder(View itemView, CountrieListAdapter mAdapter) {
+        CountrieViewHolder(View itemView, CountrieListAdapter adapter) {
             super(itemView);
-            countrieItemView = itemView.findViewById(R.id.countrie);
-            this.mAdapter = mAdapter;
+            countrieItem1View = itemView.findViewById(R.id.countrie);
+            countrieItem2View = itemView.findViewById(R.id.img);
+
+            this.mAdapter = adapter;
         }
     }
 }
